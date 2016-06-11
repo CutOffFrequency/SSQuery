@@ -1,0 +1,9 @@
+  * {
+  	font-family:  helvetica;
+} a {
+	padding: 5px;
+} form span {
+	display: block;
+} form input, a {
+	float: auto;
+}
