@@ -9,7 +9,7 @@
 	<body>
 		<div id="app">
 			<h1>{{ message }}</h1>
-            <form @submit="concatUrl">
+            <form>
                 <span class="notice" v-show="!search">
                     Enter a search term
                 </span>
@@ -34,19 +34,18 @@
         		el: '#app',
 
         		data: {
-        			message: 'Account Query',
-                    search: ''
+        		        message: 'Account Query',
+                	        search: ''
         		},
 
-                computed: {
-                    link1: function() {
-                        return domainApi + query1 + this.search.toUpperCase() + gid
-                    },
-                    link2: function() {
-                        return domainApi + query2 + this.search.toUpperCase() + gid
-                    },
-
-                }
+        		computed: {
+                                link1: function() {
+                                    return domainApi + query1 + this.search.toUpperCase() + gid
+                                },
+                                link2: function() {
+                                    return domainApi + query2 + this.search.toUpperCase() + gid
+                                }
+                        }
         	});
         </script>
 	</body>
