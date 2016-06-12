@@ -30,23 +30,23 @@
                 query2 = encodeURIComponent("SELECT A, B WHERE B CONTAINS ") + '%27',
                 gid = '%27&gid=1539278930';
 
-        	new Vue ({
-        		el: '#app',
+            new Vue ({
+                el: '#app',
 
-        		data: {
-        		        message: 'Account Query',
-                	        search: ''
-        		},
+                data: {
+                    message: 'Account Query',
+                    search: ''
+                },
 
-        		computed: {
-                                link1: function() {
-                                    return domainApi + query1 + this.search.toUpperCase() + gid
-                                },
-                                link2: function() {
-                                    return domainApi + query2 + this.search.toUpperCase() + gid
-                                }
-                        }
-        	});
+                computed: {
+                    link1: function() {
+                        return domainApi + query1 + this.search.toUpperCase() + gid
+                    },
+                    link2: function() {
+                        return domainApi + query2 + this.search.toUpperCase() + gid
+                    }
+                }
+            });
         </script>
 	</body>
     </html>
