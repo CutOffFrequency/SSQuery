@@ -1,52 +1,41 @@
-<!DOCTYPE html>
-	<html>
-	<head>
+  </head>
+    <body>
+      <div id="app">
+        <h1>{{ message }}</h1>
+        <form>
+          <span class="notice" v-show="!search">
+            Enter a search term
+          </span>
+          <span class="notice" v-show="search">
+            Click on the links below to search for: {{ search | uppercase }}
+          </span>
+          <input id="search" v-model="search">
+          <a href="{{ link1 }}" v-show="search">{{ search }} &#58; Col. A</a>
+          <a href="{{ link2 }}" v-show="search">{{ search }} &#58; Col. A &#38; B</a>
+        </form>
+      </div>
 
-	<title>SSQuery</title>
-        <link type="text/css" rel="stylesheet" href="SSQuery.css"/>
-
-	</head>
-	<body>
-            <div id="app">
-                <h1>{{ message }}</h1>
-            <form>
-                <span class="notice" v-show="!search">
-                    Enter a search term
-                </span>
-                <span class="notice" v-show="search">
-                    Click on the links below to search for: {{ search | uppercase }}
-                </span>
-                <input id="search" v-model="search">
-                <a href="{{ link1 }}" v-show="search">{{ search }} &#58; Col. A</a>
-                <a href="{{ link2 }}" v-show="search">{{ search }} &#58; Col. A &#38; B</a>
-
-            </form>
-        </div>
-
-        <script src="https://cdn.jsdelivr.net/vue/1.0.24/vue.min.js"></script>
-        <script>
-            var domainApi = 'https://docs.google.com/spreadsheets/d/1dlNVXI0mnQLAqXRZOyend8RhRtKU087G82PsRl64DlI/gviz/tq?tqx=out:html&tq=',
-                query1 = encodeURIComponent("SELECT A WHERE B CONTAINS ") + '%27',
-                query2 = encodeURIComponent("SELECT A, B WHERE B CONTAINS ") + '%27',
-                gid = '%27&gid=1539278930';
-
-            new Vue ({
-                el: '#app',
-
-                data: {
-                    message: 'Account Query',
-                    search: ''
+      <script src="https://cdn.jsdelivr.net/vue/1.0.24/vue.min.js"></script>
+      <script>
+        var domainApi = 'https://docs.google.com/spreadsheets/d/1dlNVXI0mnQLAqXRZOyend8RhRtKU087G82PsRl64DlI/gviz/tq?tqx=out:html&tq=',
+            query1 = encodeURIComponent("SELECT A WHERE B CONTAINS ") + '%27',
+            query2 = encodeURIComponent("SELECT A, B WHERE B CONTAINS ") + '%27',
+            gid = '%27&gid=1539278930';
+        new Vue ({
+            el: '#app',
+            data: {
+            message: 'Account Query',
+            search: ''
+            },
+            computed: {
+                link1: function() {
+                    return domainApi + query1 + this.search.toUpperCase() + gid
                 },
-
-                computed: {
-                    link1: function() {
-                        return domainApi + query1 + this.search.toUpperCase() + gid
-                    },
-                    link2: function() {
-                        return domainApi + query2 + this.search.toUpperCase() + gid
-                    }
+                link2: function() {
+                    return domainApi + query2 + this.search.toUpperCase() + gid
                 }
-            });
-        </script>
-	</body>
-    </html>
+            }
+        });
+      </script>
+    </body>
+  </html>
