@@ -1,4 +1,9 @@
-  </head>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>SSQuery</title>
+      <link type="text/css" rel="stylesheet" href="SSQuery.css"/>
+    </head>
     <body>
       <div id="app">
         <h1>{{ message }}</h1>
@@ -21,6 +26,7 @@
             query1 = encodeURIComponent("SELECT A WHERE B CONTAINS ") + '%27',
             query2 = encodeURIComponent("SELECT A, B WHERE B CONTAINS ") + '%27',
             gid = '%27&gid=1539278930';
+
         new Vue ({
             el: '#app',
             data: {
